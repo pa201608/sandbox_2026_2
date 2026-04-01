@@ -1,22 +1,18 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { Component, inject, signal } from '@angular/core';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-root',
-  imports: [TranslatePipe],
+  imports: [TranslocoDirective],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App implements OnInit {
-  private readonly translate = inject(TranslateService);
+export class App {
+  private readonly transloco = inject(TranslocoService);
   protected readonly currentLang = signal<string>('de');
 
-  ngOnInit(): void {
-    this.translate.use('de');
-  }
-
   switchLang(lang: string): void {
-    this.translate.use(lang);
+    this.transloco.setActiveLang(lang);
     this.currentLang.set(lang);
   }
 }

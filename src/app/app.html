@@ -1,4 +1,4 @@
-<main>
+<main *transloco="let t">
   <nav>
     <button
       [class.active]="currentLang() === 'de'"
@@ -8,6 +8,6 @@
       (click)="switchLang('en')">EN</button>
   </nav>
 
-  <h1>{{ 'TITLE' | translate }}</h1>
-  <p>{{ 'DESCRIPTION' | translate }}</p>
+  <h1>{{ t('TITLE') }}</h1>
+  <p>{{ t('DESCRIPTION') }}</p>
 </main>
