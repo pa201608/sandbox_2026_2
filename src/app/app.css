@@ -1,0 +1,16 @@
+main {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: #555;
+  font-size: 1.1rem;
+}
