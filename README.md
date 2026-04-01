@@ -2,6 +2,37 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.5.
 
+---
+
+## i18n — Two approaches explored
+
+This project went through two iterations of internationalisation. Both are documented under [`docs/`](./docs/).
+
+### Branch 1 · ngx-translate
+
+**Package:** `@ngx-translate/core`
+**Goal:** Quick integration of a well-known i18n library using a Custom Loader that bundles translations at build time (no HTTP calls).
+
+The approach worked, but ngx-translate is a legacy library with limited standalone-API support. It was replaced in the second iteration.
+
+### Branch 2 · Transloco ← current
+
+**Package:** `@jsverse/transloco`
+**Goal:** Modern replacement for ngx-translate, designed for Angular standalone apps. Translations are bundled as an inline loader directly in `app.config.ts` — no separate loader file, no HTTP calls.
+
+Key differences from Branch 1:
+
+| | ngx-translate | Transloco |
+|---|---|---|
+| Provider | `provideTranslateService()` | `provideTransloco()` |
+| Template | `'KEY' \| translate` pipe | `*transloco="let t"` directive |
+| Service | `TranslateService.use()` | `TranslocoService.setActiveLang()` |
+| Loader file | separate class file | inline class in `app.config.ts` |
+
+See [`docs/transloco-setup.md`](./docs/transloco-setup.md) for the full setup guide.
+
+---
+
 ## Development server
 
 To start a local development server, run:
