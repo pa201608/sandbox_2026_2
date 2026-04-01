@@ -1,4 +1,13 @@
 <main>
-  <h1>{{ title() }}</h1>
-  <p>{{ description() }}</p>
+  <nav>
+    <button
+      [class.active]="currentLang() === 'de'"
+      (click)="switchLang('de')">DE</button>
+    <button
+      [class.active]="currentLang() === 'en'"
+      (click)="switchLang('en')">EN</button>
+  </nav>
+
+  <h1>{{ 'TITLE' | translate }}</h1>
+  <p>{{ 'DESCRIPTION' | translate }}</p>
 </main>
